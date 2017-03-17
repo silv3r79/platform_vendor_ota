@@ -20,9 +20,18 @@ function write_xml() {
 
 function update_target() {
   if [ "$COS_RELEASE" == true ]; then
+
+    version="$COS_VERSION"
+    device=$(echo $version | cut -d _ -f 2)
+    android=$(echo $version | cut -d _ -f 3)
+    product=${version%_*}
+    product=${product%_*}
+    date=$(echo $version | cut -d _ -f 3 | cut -d . -f 1)
+
     mkdir -p $(gettop)/vendor/ota/changelogs
-    touch changelogs/${version}.txt
-    "${editor:-nano}" $(gettop)/vendor/ota/changelogs/${version}.txt
+    touch $(gettop)/vendor/ota/changelogs/${version}.txt
+    cp $OUT/cos_${device}-Changelog.txt $(gettop)/vendor/ota/changelogs/${version}.txt
+    "${EDITOR:-nano}" $(gettop)/vendor/ota/changelogs/${version}.txt
 
     CHANGELOG="$(cat $(gettop)/vendor/ota/changelogs/${version}.txt)"
 
@@ -38,19 +47,13 @@ function update_target() {
         GPG_SIGN=true
       fi
     done
-
-    version="$COS_VERSION"
-    device=$(echo $version | cut -d _ -f 2)
-    android=$(echo $version | cut -d _ -f 3)
-    product=${version%_*}
-    product=${product%_*}
-    date=$(echo $version | cut -d _ -f 3 | cut -d . -f 1)
-    write_xml > $product.xml
+    cd $(gettop)/vendor/ota
+    write_xml > $device.xml
     git add -A
     if [ "$GPG_SIGN" == true ]; then
-      git commit -S -m "Update $device ($date)"
+      git commit -S -m "OTA: Update $device ($(date +%d/%m/%Y))"
     else
-      git commit -m "Update $device ($date)"
+      git commit -m "OTA: Update $device ($(date +%d/%m/%Y))"
     fi
     echo "Please push the commit and open a PR."
   else
