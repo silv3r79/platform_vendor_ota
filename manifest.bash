@@ -33,8 +33,8 @@ function update_target() {
     git pull cosmic-os n7.1
     mkdir -p $(gettop)/vendor/ota/changelogs
     touch $(gettop)/vendor/ota/changelogs/${version}.txt
-    cp $OUT/cos_${device}-Changelog.txt $(gettop)/vendor/ota/changelogs/${version}.txt
-    "${EDITOR:-nano}" $(gettop)/vendor/ota/changelogs/${version}.txt
+    head -n 45 $OUT/cos_${device}-Changelog.txt > $(gettop)/vendor/ota/changelogs/${version}.txt
+    editor $(gettop)/vendor/ota/changelogs/${version}.txt
 
     CHANGELOG="$(cat $(gettop)/vendor/ota/changelogs/${version}.txt)"
 
