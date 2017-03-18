@@ -5,7 +5,7 @@ function write_xml() {
   echo "<ROM>"
   echo "  <RomName>$product</RomName>"
   echo "  <VersionName><![CDATA[ $version ]]></VersionName>"
-  echo "  <VersionNumber type=\"integer\">"$(date +%Y%m%d)"</VersionNumber>"
+  echo "  <VersionNumber type=\"integer\">"${date}"</VersionNumber>"
   echo "  <DirectUrl>https://excellmedia.dl.sourceforge.net/project/cosmic-os/$device/${version}.zip</DirectUrl>"
   echo "  <HttpUrl>https://sourceforge.net/projects/cosmic-os/files/$device</HttpUrl>"
   echo "  <Android>$android</Android>"
@@ -21,13 +21,27 @@ function write_xml() {
 function update_target() {
   if [ "$COS_RELEASE" == true ]; then
 
+    for var in "$@"
+    do
+      if [ "$var" == "-S" ]; then
+        GPG_SIGN=true
+      elif [ "$var" == "-d" ]; then
+        CUSTOM_DATE=true
+      fi
+    done
     version="$COS_VERSION"
-    device=$(echo $version | cut -d _ -f 2)
-    android=$(echo $version | cut -d _ -f 3)
-    product=${version%_*}
-    product=${product%_*}
-    date=$(echo $version | cut -d _ -f 3 | cut -d . -f 1)
-
+    version_date=$(echo $version | rev | cut -d _ -f 2 | rev)
+    device=$(echo $TARGET_PRODUCT | cut -d _ -f 2,3)
+    android="7.1.1"
+    product=Cosmic-OS_${device}_${android}
+    if [ "$CUSTOM_DATE" == true ]; then
+      printf 'Enter date in format YYYYMMDD: '
+      read -r mdate
+      date=$(date -d "$mdate" +'%Y%m%d'); 
+    else
+      date=$(date +%Y%m%d)
+    fi
+    version=$(echo $version | sed -e "s/${version_date}/${date}/g")
     cd $(gettop)/vendor/ota
     git reset --hard HEAD
     git pull cosmic-os n7.1
@@ -44,18 +58,14 @@ function update_target() {
       echo "Hello ${MAINTAINER}!"
     fi
     
-    for var in "$@"
-    do
-      if [ "$var" == "-S" ]; then
-        GPG_SIGN=true
-      fi
-    done
     write_xml > $device.xml
     git add -A
     if [ "$GPG_SIGN" == true ]; then
-      git commit -S -m "OTA: Update $device ($(date +%d/%m/%Y))"
+      git commit -S -m "OTA: Update $device ($(date -d "$mdate" +'%d/%m/%Y'))"i
+       echo
     else
-      git commit -m "OTA: Update $device ($(date +%d/%m/%Y))"
+      git commit -m "OTA: Update $device ($(date -d "$mdate" +'%d/%m/%Y'))"
+      echo
     fi
     echo "Please push the commit and open a PR."
   else
