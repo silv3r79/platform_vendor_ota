@@ -6,7 +6,7 @@ function write_xml() {
   echo "  <RomName>$product</RomName>"
   echo "  <VersionName><![CDATA[ $version ]]></VersionName>"
   echo "  <VersionNumber type=\"integer\">"${date}"</VersionNumber>"
-  echo "  <DirectUrl>https://excellmedia.dl.sourceforge.net/project/cosmic-os/$device/${version}.zip</DirectUrl>"
+  echo "  <DirectUrl>https://downloads.sourceforge.net/project/cosmic-os/$device/${version}.zip</DirectUrl>"
   echo "  <HttpUrl>https://sourceforge.net/projects/cosmic-os/files/$device</HttpUrl>"
   echo "  <Android>$android</Android>"
   echo "  <CheckMD5>"$(md5sum $OUT/$version.zip | awk '{print $1}')"</CheckMD5>"
