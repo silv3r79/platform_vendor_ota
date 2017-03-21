@@ -72,7 +72,7 @@ function update_target() {
     write_xml > $device.xml
     git add -A
     if [ "$GPG_SIGN" == true ]; then
-      git commit -S -m "OTA: Update $device ($(date -d "$mdate" +'%d/%m/%Y'))"i
+      git commit -S -m "OTA: Update $device ($(date -d "$mdate" +'%d/%m/%Y'))"
        echo
     else
       git commit -m "OTA: Update $device ($(date -d "$mdate" +'%d/%m/%Y'))"
