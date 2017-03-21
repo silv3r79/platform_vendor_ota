@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ROM>
-  <RomName>Cosmic-OS_bacon_7.1.1</RomName>
-  <VersionName><![CDATA[ Cosmic-OS_bacon_7.1.1_20170321_1.4-OFFICIAL ]]></VersionName>
-  <VersionNumber type="integer">20170321</VersionNumber>
-  <DirectUrl>https://downloads.sourceforge.net/project/cosmic-os/bacon/Cosmic-OS_bacon_7.1.1_20170321_1.4-OFFICIAL.zip</DirectUrl>
-  <HttpUrl>https://sourceforge.net/projects/cosmic-os/files/bacon</HttpUrl>
-  <Android>7.1.1</Android>
-  <CheckMD5>e28cd2a851e8308d7d760d23b461ab44</CheckMD5>
-  <FileSize type="integer">368888564</FileSize>
-  <Developer>Kshitij Gupta</Developer>
-  <WebsiteURL nil="true">cosmic-os.com</WebsiteURL>
-  <DonateURL nil="true"/>
-  <Changelog>====================
+====================
      03-21-2017
 ====================
 
@@ -55,5 +42,4 @@ e934b4a  Merge "Remove qcom_common dependency" into n7x-caf  [Gerrit Code Review
 f2f8f23  manifest: Don't hardcode a sourceforge mirror  [Kshitij Gupta]
 823efd7  OTA: Update lettuce (19/03/2017)  [Sagar Shah]
 
-====================</Changelog>
-</ROM>
+====================
