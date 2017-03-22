@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ROM>
-  <RomName>Cosmic-OS_bacon_7.1.1</RomName>
-  <VersionName><![CDATA[ Cosmic-OS_bacon_7.1.1_20170322_1.4-OFFICIAL ]]></VersionName>
-  <VersionNumber type="integer">20170322</VersionNumber>
-  <DirectUrl>https://downloads.sourceforge.net/project/cosmic-os/bacon/Cosmic-OS_bacon_7.1.1_20170322_1.4-OFFICIAL.zip</DirectUrl>
-  <HttpUrl>https://sourceforge.net/projects/cosmic-os/files/bacon</HttpUrl>
-  <Android>7.1.1</Android>
-  <CheckMD5>396fab13947195910167c8f96ff48c6b</CheckMD5>
-  <FileSize type="integer">357557349</FileSize>
-  <Developer>Kshitij Gupta</Developer>
-  <WebsiteURL nil="true">cosmic-os.com</WebsiteURL>
-  <DonateURL nil="true"/>
-  <Changelog>====================
+====================
      03-22-2017
 ====================
 
@@ -55,5 +42,4 @@ b62d950  common: Add phonograph  [Kshitij Gupta]
 cfbd067  Automatic translation import  [Abhisek Devkota]
    * packages/resources/devicesettings/
 b75c745  Automatic translation import  [Abhisek Devkota]
-   * vendor/ota/</Changelog>
-</ROM>
+   * vendor/ota/
