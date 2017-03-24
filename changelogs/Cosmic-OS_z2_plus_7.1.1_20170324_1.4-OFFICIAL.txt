@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ROM>
-  <RomName>Cosmic-OS_z2_plus_7.1.1</RomName>
-  <VersionName><![CDATA[ Cosmic-OS_z2_plus_7.1.1_20170324_1.4-OFFICIAL ]]></VersionName>
-  <VersionNumber type="integer">20170324</VersionNumber>
-  <DirectUrl>https://downloads.sourceforge.net/project/cosmic-os/z2_plus/Cosmic-OS_z2_plus_7.1.1_20170324_1.4-OFFICIAL.zip</DirectUrl>
-  <HttpUrl>https://sourceforge.net/projects/cosmic-os/files/z2_plus</HttpUrl>
-  <Android>7.1.1</Android>
-  <CheckMD5>df20346c07213b5958a284769c88d6a8</CheckMD5>
-  <FileSize type="integer">519909805</FileSize>
-  <Developer>Silv3r79</Developer>
-  <WebsiteURL nil="true">cosmic-os.com</WebsiteURL>
-  <DonateURL nil="true"/>
-  <Changelog>====================
+====================
      03-24-2017
 ====================
 
@@ -55,5 +42,4 @@ aad8a59  Drop Oneplus 3  [GitHub]
 
 ====================
      03-22-2017
-====================</Changelog>
-</ROM>
+====================
